@@ -1,5 +1,4 @@
 name: pull request workflow for native tests
-
 on:
   push:
     branches:
@@ -9,14 +8,36 @@ on:
       - main
   workflow_dispatch:
 
-
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: test-login
-        run: mvn clean -Dtest='LoginScenarios' test
+      
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+      
+      - name: Setup ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+      
+      - name: Start ChromeDriver
+        run: |
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+      
+      - name: Build with Maven
+        run: mvn clean compile
+      
+      - name: Run login Tests
+        run: mvn test -Dtest=LoginScenarios
+      
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: target/surefire-reports/
