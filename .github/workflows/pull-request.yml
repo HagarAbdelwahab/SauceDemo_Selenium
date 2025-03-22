@@ -9,6 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
+    Login_Purchase_tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
