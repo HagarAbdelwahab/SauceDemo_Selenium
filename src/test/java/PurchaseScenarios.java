@@ -3,6 +3,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.HomePage;
@@ -12,29 +13,17 @@ import pages.LoginPage;
 public class PurchaseScenarios extends BaseTest {
 
 
-    @BeforeClass()
+    @BeforeMethod()
     public void Setup() {
-        LoginPage loginpage = new LoginPage(driver);
+        LoginPage loginpage = new LoginPage(getDriver());
         loginpage.navigateToLoginPage();
         loginpage.login("standard_user","secret_sauce");
     }
-    @Test(description = "Purchase an Item")
+    @Test(priority = 1,description = "Purchase an Item")
     @Description("")
     @Severity(SeverityLevel.CRITICAL)
     public void addItemToCart() {
-        HomePage homePage = new HomePage(driver);
-        homePage.scrollToProduct();
-        homePage.clickAddToCart();
-        homePage.scrollToCart();
-        Assert.assertEquals(homePage.getCartItems(),"1");
-    }
-
-
-    @Test(description = "Remove item from Cart")
-    @Description("")
-    @Severity(SeverityLevel.CRITICAL)
-    public void removeItemFromCart() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(getDriver());
         homePage.scrollToProduct();
         homePage.clickAddToCart();
         homePage.scrollToCart();
@@ -43,19 +32,18 @@ public class PurchaseScenarios extends BaseTest {
         homePage.clickRemoveFromCart();
         homePage.scrollToCart();
         Assert.assertEquals(homePage.getCartItems(),"");
-
     }
 
-    @Test(description = "Go to cart page")
+    @Test(priority = 3,description = "Go to cart page")
     @Description("")
     @Severity(SeverityLevel.CRITICAL)
-    public void GoToCartPage() {
-        HomePage homePage = new HomePage(driver);
+    public void goToCartPage() {
+        HomePage homePage = new HomePage(getDriver());
         homePage.scrollToProduct();
         homePage.clickAddToCart();
         homePage.scrollToCart();
         homePage.clickOnCartIcon();
-        CartPage cartPage = new CartPage(driver);
+        CartPage cartPage = new CartPage(getDriver());
         Assert.assertEquals(cartPage.getProductName(),"Sauce Labs Onesie");
         Assert.assertEquals( cartPage.checkProductPrice(),"$7.99");
 

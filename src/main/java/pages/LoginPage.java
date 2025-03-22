@@ -38,7 +38,7 @@ public class LoginPage {
      */
     public void navigateToLoginPage() {
         try {
-            driver.get(config.getBaseUrl() + "/login");
+            driver.get(config.getBaseUrl() );
             logger.info("Navigated to login page");
         } catch (Exception e) {
             logger.error("Failed to navigate to login page", e);

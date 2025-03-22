@@ -6,11 +6,12 @@ Feature: Login Functionality
             Given launch chrome browser
 
         Scenario: Successful login with valid credentials
-            Given I am on the login page
-             When I login with username "standard_user" and password "secret_sauce"
-             Then click on menu
-             Then click on logout
+            Given User is on the login page
+             When User logins with username "standard_user" and password "secret_sauce"
+             Then user clicks on menu
+             Then user clicks on logout
 
 
-#        Scenario: Failed login with invalid credentials
-#             When I login with username "admin" and password "admin"
+        Scenario: Failed login with invalid credentials
+             When User logins with username "admin" and password "admin"
+             Then An error message is displayed that "Epic sadface: Username and password do not match any user in this service"

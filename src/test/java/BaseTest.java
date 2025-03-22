@@ -16,12 +16,11 @@ import java.io.ByteArrayInputStream;
 import java.time.Duration;
 
 public class BaseTest {
-
-    protected WebDriver driver;
+    // Make driver static so it's shared across all instances of classes that extend BaseTest
+    protected static WebDriver driver;
     protected ConfigLoader config;
     protected static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
     private static boolean isInitialized = false;
-
 
     @BeforeClass
     protected void initializeDriver() {
@@ -31,19 +30,23 @@ public class BaseTest {
                 driver = createDriver();
                 setupDriver();
                 isInitialized = true;
+                logger.info("WebDriver initialized successfully");
             } catch (Exception e) {
                 logger.error("Failed to setup test", e);
                 throw e;
             }
+        } else {
+            logger.info("Using existing WebDriver instance");
         }
     }
-
 
     protected void cleanupDriver() {
         if (isInitialized && driver != null) {
             try {
                 driver.quit();
+                driver = null;
                 isInitialized = false;
+                logger.info("WebDriver cleaned up successfully");
             } catch (Exception e) {
                 logger.error("Failed to quit driver", e);
             }
@@ -67,7 +70,6 @@ public class BaseTest {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--start-maximized");
-            options.addArguments("--headless");
             options.addArguments("--window-size=1920,1080");
 
             // Disable unwanted features
@@ -90,7 +92,6 @@ public class BaseTest {
             throw e;
         }
     }
-
 
     private void setupDriver() {
         try {
@@ -121,6 +122,10 @@ public class BaseTest {
     }
 
     protected WebDriver getDriver() {
+        if (driver == null) {
+            logger.warn("Driver is null. Initializing driver.");
+            initializeDriver();
+        }
         return driver;
     }
 }

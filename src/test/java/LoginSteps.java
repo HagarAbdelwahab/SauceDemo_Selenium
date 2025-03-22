@@ -1,6 +1,7 @@
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
 
@@ -12,16 +13,24 @@ public class LoginSteps extends BaseTest {
         initializeDriver();
     }
 
-    @Given("I am on the login page")
+    @Given("User is on the login page")
     public void goToLoginPage() {
-        LoginPage loginpage = new LoginPage(driver);
+        LoginPage loginpage = new LoginPage(getDriver());
         loginpage.navigateToLoginPage();
     }
 
-    @When("I login with username {string} and password {string}")
+    @When("User logins with username {string} and password {string}")
     public void submitLogin(String username, String password) {
-        LoginPage loginpage = new LoginPage(driver);
+        LoginPage loginpage = new LoginPage(getDriver());
         loginpage.login(username, password);
+    }
+
+    @Then("An error message is displayed that {string}")
+    public void submitLogin(String errorMsg) {
+        LoginPage loginpage = new LoginPage(getDriver());
+        Assert.assertTrue(loginpage.isErrorMessageDisplayed(), "Error message should be displayed");
+        Assert.assertEquals(loginpage.getErrorMessageText(),
+                errorMsg);
     }
 
 
