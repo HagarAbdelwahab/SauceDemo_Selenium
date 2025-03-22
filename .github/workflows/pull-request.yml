@@ -34,4 +34,7 @@ jobs:
       
       - name: Run login Tests
         run: mvn test -Dtest=LoginScenarios
+
+      - name: Run purchase Tests
+        run: mvn test -Dtest=PurchaseScenarios
       
