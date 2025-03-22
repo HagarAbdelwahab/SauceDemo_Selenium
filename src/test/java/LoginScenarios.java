@@ -1,5 +1,4 @@
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import io.qameta.allure.Description;
