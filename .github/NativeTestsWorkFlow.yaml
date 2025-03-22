@@ -1,0 +1,25 @@
+name: pull request workflow for native tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: test-login
+        run: mvn clean -Dtest='' test
+
+      - name: test-purchase
+        run: mvn clean -Dtest='' test
