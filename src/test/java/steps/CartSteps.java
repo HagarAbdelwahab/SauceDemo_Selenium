@@ -1,3 +1,6 @@
+package steps;
+
+import test.java.BaseTest;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
 import pages.CartPage;

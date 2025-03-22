@@ -1,9 +1,11 @@
+package steps;
+import test.java.BaseTest;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import pages.HomePage;
 import pages.LoginPage;
+
 
 public class LoginSteps extends BaseTest {
 

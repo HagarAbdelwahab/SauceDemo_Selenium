@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.HomePage;
 import pages.LoginPage;
+import test.java.BaseTest;
 
 
 public class PurchaseScenarios extends BaseTest {

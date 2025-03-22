@@ -1,7 +1,10 @@
+package steps;
+
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.Assert;
 import pages.HomePage;
+import test.java.BaseTest;
+
 
 public class HomePageSteps extends BaseTest{
 

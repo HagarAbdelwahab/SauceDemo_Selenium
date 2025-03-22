@@ -6,6 +6,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import pages.HomePage;
 import pages.LoginPage;
+import test.java.BaseTest;
 
 public class LoginScenarios extends BaseTest {
 
