@@ -2,7 +2,7 @@
 
 ## Web Application Testing Framework
 
-This repository contains an automated testing framework for a web application, focusing on login functionality and shopping cart operations. The framework is built using Java, Selenium/Cypress, and Cucumber for behavior-driven development (BDD).
+This repository contains an automated testing framework for a web application, focusing on login functionality and shopping cart operations in native tests (TDD) and (BDD) using Cucumber. The framework is built using Java, Selenium, and Cucumber for behavior-driven development (BDD).
 
 ## Project Structure
 
@@ -61,6 +61,10 @@ The framework tests two login scenarios:
 2. **Failed login with invalid credentials**
    - Attempt login with incorrect credentials
    - Verify error message: "Epic sadface: Username and password do not match any user in this system"
+2. **Logout login with invalid credentials**
+   - Attempt login with correct credentials
+   - logout
+   - Verify login form is displayed
 
 ### Purchase Functionality
 
@@ -79,6 +83,8 @@ The purchase feature includes:
    - Verify product name and price in cart
 
 ## How to Run Tests
+mvn test -Dtest
+mvn test -Dtest=CucumberTestRunner
 
 ### Prerequisites
 - Java JDK 8 or higher
