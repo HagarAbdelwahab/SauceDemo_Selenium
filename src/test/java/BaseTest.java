@@ -72,7 +72,7 @@ public class BaseTest {
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--start-maximized");
             options.addArguments("--window-size=1920,1080");
-           // options.addArguments("--headless");
+            options.addArguments("--headless");
 
             // Disable unwanted features
             options.addArguments("--disable-extensions");
