@@ -48,13 +48,6 @@ public class ConfigLoader {
         return getProperty("base.url");
     }
 
-    public String getBrowser() {
-        return getProperty("browser");
-    }
-
-    public boolean isHeadless() {
-        return Boolean.parseBoolean(getProperty("headless"));
-    }
 
     public int getImplicitWait() {
         return Integer.parseInt(getProperty("implicit.wait"));

@@ -3,16 +3,16 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.Properties;
+
 import java.time.Duration;
-import java.util.Properties;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utils.ConfigLoader;
@@ -110,14 +110,14 @@ public class LoginPage {
     }
 
 
-    public boolean isErrorMessageDisplayed() {
+    public boolean isOnLoginPage() {
         try {
-            WebElement errorElement = wait.until(
+            WebElement loginForm = wait.until(
                     ExpectedConditions.visibilityOfElementLocated(
-                            By.cssSelector("[data-test='error']")));
+                            LocatorUtils.getLocator("login.form.class")));
             return true;
         } catch (Exception e) {
-            logger.warn("Error message was not displayed");
+            logger.warn("login form was not displayed");
             return false;
         }
     }

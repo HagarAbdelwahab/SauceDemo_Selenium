@@ -30,7 +30,6 @@ public class LoginSteps extends BaseTest {
     @Then("An error message is displayed that {string}")
     public void submitLogin(String errorMsg) {
         LoginPage loginpage = new LoginPage(getDriver());
-        Assert.assertTrue(loginpage.isErrorMessageDisplayed(), "Error message should be displayed");
         Assert.assertEquals(loginpage.getErrorMessageText(),
                 errorMsg);
     }

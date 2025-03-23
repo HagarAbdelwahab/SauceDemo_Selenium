@@ -1,9 +1,8 @@
 package pages;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +38,11 @@ public class HomePage {
     public String getCartItems() {
         LocatorUtils.scrollToElement("shopping.cart.container.id",driver,wait);
         return LocatorUtils.getText("shopping.cart.container.id",driver);
+    }
+
+
+    public boolean checkProductsAreVisible(){
+       return LocatorUtils.checkLocatorIsVisible("shopping.cart.container.id",wait);
     }
 
 

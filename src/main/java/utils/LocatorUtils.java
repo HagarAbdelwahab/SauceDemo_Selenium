@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.sql.Driver;
 import java.util.Properties;
 
 public class LocatorUtils {
@@ -89,6 +88,20 @@ public class LocatorUtils {
             throw e;
         }
     }
+
+    public static boolean checkLocatorIsVisible(String locator,WebDriverWait wait) {
+        try {
+            WebElement loginForm = wait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            LocatorUtils.getLocator(locator)));
+            return true;
+        } catch (Exception e) {
+            logger.warn("login form was not displayed");
+            return false;
+        }
+    }
+
+
 
 
 

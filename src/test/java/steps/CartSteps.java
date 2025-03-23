@@ -1,9 +1,10 @@
 package steps;
 
-import test.java.BaseTest;
-import io.cucumber.java.en.Then;
 import org.testng.Assert;
+
+import io.cucumber.java.en.Then;
 import pages.CartPage;
+import test.java.BaseTest;
 
 
 public class CartSteps extends BaseTest {
@@ -14,6 +15,7 @@ public class CartSteps extends BaseTest {
         CartPage cartPage = new CartPage(getDriver());
         cartPage.getProductName();
         Assert.assertEquals(cartPage.getProductName(), expectedProductName);
+
     }
 
     @Then("user checks product price is {string}")

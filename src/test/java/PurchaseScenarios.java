@@ -1,9 +1,10 @@
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import pages.CartPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -22,7 +23,7 @@ public class PurchaseScenarios extends BaseTest {
     @Test(priority = 1,description = "Purchase an Item")
     @Description("")
     @Severity(SeverityLevel.CRITICAL)
-    public void addItemToCart() {
+    public void addItemToCartAndRmoveIt() {
         HomePage homePage = new HomePage(getDriver());
         homePage.scrollToProduct();
         homePage.clickAddToCart();
@@ -48,4 +49,6 @@ public class PurchaseScenarios extends BaseTest {
         Assert.assertEquals( cartPage.checkProductPrice(),"$7.99");
 
     }
+
+    // TODO: remove hard-coded exp value
 }
